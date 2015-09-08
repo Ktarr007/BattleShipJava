@@ -74,7 +74,7 @@ public class Battleship
     //column number
     //@param row: the row number of the desired target
     //@param column: the column rumber of the desired target
-    public void guess(int row, int column)
+    public boolean guess(int row, int column)
     {
         //Updates the transcript so the user can see their past guesses
         //in format- row: a   column: b
@@ -85,21 +85,21 @@ public class Battleship
             game[row][column] = 2;
             
             //Displays the current state of the game board
-            printGame();
-            JOptionPane.showMessageDialog(null, "Battleship Down!", "Congrats", 
-                    JOptionPane.PLAIN_MESSAGE);
             hits++;
             hitsGame++;
+            printGame();
+            return true;
+            
         }
         else
         {
             game[row][column] = 3;
             //Displays the current state of the game board
-            printGame();
-            JOptionPane.showMessageDialog(null, "Missed... Try again!", 
-                    "Missed", JOptionPane.ERROR_MESSAGE);
             misses++;
             missesGame++;
+            printGame();
+            return false;
+            
         }
               
     }
